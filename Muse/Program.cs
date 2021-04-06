@@ -14,7 +14,7 @@ namespace Muse
 
             var leaf = new Leaf
             {
-                Period = 2,
+                Period = 12,
                 Affluence = 7,
                 InPosition = 0,
                 Name = "A"
@@ -22,7 +22,7 @@ namespace Muse
 
             var leaf2 = new Leaf
             {
-                Period = 3,
+                Period = 36,
                 Affluence = 7,
                 InPosition = 0,
                 Name = "B"
@@ -32,13 +32,13 @@ namespace Muse
             {
                 Algorithm = Algorithm.D,
                 BaseNote = 30,
-                Duration = 400,
+                Duration = 3600,
                 Tracks = new Leaf[] { leaf, leaf2 }
             };
             
-            seq.AlgoD(song);
+            seq.AlgoE(song);
 
-            seq.Save("test5.mid");
+            seq.Save("test7.mid");
         }
     }
 }

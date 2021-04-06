@@ -93,5 +93,69 @@ namespace Muse
                 seq.Add(t);
             }
         }
+        public static void AlgoE(this Sequence seq, Song song)
+        {
+            var channel = 0;
+            foreach (var trk in song.Tracks)
+            {
+                var t = new Track();
+                var noteDuration = trk.Period;
+
+                // Loop from 0 to the song duration by 36
+                for (var pos = 0; pos <= song.Duration; pos += trk.Period)
+                {
+
+                    // Only process the note if we're within the range of the track's in
+                    // and out position
+                    var inPosition = trk.InPosition ?? 0;
+                    var outPosition = trk.OutPosition ?? -1;
+                    if (pos >= inPosition && (outPosition < 0 || pos < outPosition))
+                    {
+                        int note;
+                        if (trk.Chord != null)
+                        {
+                            var chord = trk.Chord;
+                            if (chord.Length > 0)
+                            {
+                                var r = new Random();
+                                if (r.Next(0, 99) % 3 > 0)
+                                {
+                                    foreach (var noteIndex in chord)
+                                    {
+                                        // high chance that we'll render this note
+                                        r = new Random();
+                                        if (r.Next(0, 99) % 3 > 0)
+                                        {
+                                            note = Scales.JazzScale[Math.Min(noteIndex.Value, Scales.JazzScale.Length - 1)];
+                                            //getJazzNote(song: song, track: trk) //song.baseNote + song.seed[noteIndex]
+                                            // add the note
+                                            t.InsertNote(note, 100, pos, noteDuration, channel);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            note = Scales.JazzScale.GetNote(song, trk);
+                            var r = new Random();
+                            // high chance we'll play the note
+                            if (r.Next(0, 99) % 3 > 0)
+                            {
+                                t.InsertNote(note, 100, pos, noteDuration, channel);
+                            }
+                        }
+                    }
+                }
+                // switch to the next channel
+                channel += 1;
+                if (channel == 10)
+                {
+                    channel = 11;
+                }
+
+                seq.Add(t);
+            }
+        }
     }
 }
