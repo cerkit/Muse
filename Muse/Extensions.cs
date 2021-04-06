@@ -17,17 +17,16 @@ namespace Muse
 
         public static void InsertNote(this Track t, int pitch, int velocity, int position, int duration, int channel)
         {
-            int NOTE_LENGTH = 6;
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             builder.Command = ChannelCommand.NoteOn;
             builder.Data1 = pitch;
             builder.Data2 = velocity;
             builder.MidiChannel = channel;
             builder.Build();
-            t.Insert(position * NOTE_LENGTH, builder.Result);
+            t.Insert(position, builder.Result);
             builder.Command = ChannelCommand.NoteOff;
             builder.Build();
-            t.Insert((position + duration) * NOTE_LENGTH, builder.Result);
+            t.Insert(position + duration, builder.Result);
         }
 
         public static void AlgoD(this Sequence seq, Song song)
@@ -39,7 +38,7 @@ namespace Muse
                 var noteDuration = trk.Period;
 
                 // Loop from 0 to the s ong duration by 10 (an arbitrary song division)
-                for (var pos = 0; pos <= song.Duration; pos += trk.Period)
+                for (var pos = 0; pos <= song.Duration + 16; pos+=16)
                 {
 
                     // Only process the note if we're within the range of the track's in
@@ -74,12 +73,12 @@ namespace Muse
                         }
                         else
                         {
+                            note = Scales.JazzScale.GetNote(song, trk);
                             var r = new Random();
-                            var newDuration = r.Next(1, 4);
-                            for (var newPos = 0; newPos < newDuration; newPos++)
+                            // 50% chance we'll play the note
+                            if (r.Next(1, 100) % 2 == 0)
                             {
-                                note = Scales.JazzScale.GetNote(song, trk);
-                                t.InsertNote(note, 100, newPos + newDuration, newDuration, channel);
+                                t.InsertNote(note, 100, pos, 16, channel);
                             }
                         }
                     }

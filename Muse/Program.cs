@@ -14,24 +14,31 @@ namespace Muse
 
             var leaf = new Leaf
             {
-                Period = 10,
+                Period = 2,
                 Affluence = 7,
                 InPosition = 0,
                 Name = "A"
             };
 
+            var leaf2 = new Leaf
+            {
+                Period = 3,
+                Affluence = 7,
+                InPosition = 0,
+                Name = "B"
+            };
+
             var song = new Song
             {
                 Algorithm = Algorithm.D,
-                BaseNote = 50,
-                Duration = 100,
-                Tracks = new Leaf[] { leaf }
+                BaseNote = 30,
+                Duration = 400,
+                Tracks = new Leaf[] { leaf, leaf2 }
             };
+            
+            seq.AlgoD(song);
 
-            var track = leaf.AddNotes(song, 0, 0, scale);
-
-            seq.Add(track);
-            seq.Save("test.mid");
+            seq.Save("test5.mid");
         }
     }
 }
