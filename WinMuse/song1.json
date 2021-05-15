@@ -1,0 +1,18 @@
+{
+  "name": "Test Song",
+  "baseNote": 50,
+  "duration": 100,
+  "tracks": [
+    {
+      "name": "A",
+      "octave": 1,
+      "chord": [ 0, 2, 6 ],
+      "offset": 5,
+      "period": 48,
+      "inPosition": 0,
+      "affluence": 6
+    }
+  ],
+  "seed": [ 1, 3, 5, 7, 9, 7, 5 ],
+  "algorithm": "D"
+}
