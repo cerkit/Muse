@@ -78,7 +78,7 @@ namespace WinMuse
                                         r = new Random();
                                         if (r.Next(0, 100) % 3 == 0)
                                         {
-                                            note = Scales.JazzScale[Math.Min(noteIndex, Scales.JazzScale.Length - 1)];
+                                            note = Scales.JazzScale[Math.Min(noteIndex.Value, Scales.JazzScale.Length - 1)];
                                             //getJazzNote(song: song, track: trk) //song.baseNote + song.seed[noteIndex]
                                             // add the note
                                             t.InsertNote(note, 100, pos, noteDuration, channel);
@@ -94,7 +94,7 @@ namespace WinMuse
                             // 50% chance we'll play the note
                             if (r.Next(1, 100) % 2 == 0)
                             {
-                                t.InsertNote(note, 100, pos, 16, channel);
+                                t.InsertNote(note, 100, pos, noteDuration, channel);
                             }
                         }
                     }
@@ -142,7 +142,7 @@ namespace WinMuse
                                         r = new Random();
                                         if (r.Next(0, 99) % 3 > 0)
                                         {
-                                            note = Scales.JazzScale[Math.Min(noteIndex, Scales.JazzScale.Length - 1)];
+                                            note = Scales.JazzScale[Math.Min(noteIndex.Value, Scales.JazzScale.Length - 1)];
                                             //getJazzNote(song: song, track: trk) //song.baseNote + song.seed[noteIndex]
                                             // add the note
                                             t.InsertNote(note, 100, pos, noteDuration, channel);

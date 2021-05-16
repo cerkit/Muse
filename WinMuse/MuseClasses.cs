@@ -25,7 +25,7 @@ namespace WinMuse
         [JsonPropertyName("octave")]
         public int? Octave { get; set; }
         [JsonPropertyName("chord")]
-        public int[] Chord { get; set; }
+        public int?[] Chord { get; set; }
         [JsonPropertyName("offset")]
         public int? Offset { get; set; }
         [JsonPropertyName("period")]
@@ -36,6 +36,11 @@ namespace WinMuse
         public int? OutPosition { get; set; }
         [JsonPropertyName("affluence")]
         public int Affluence { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 
 }

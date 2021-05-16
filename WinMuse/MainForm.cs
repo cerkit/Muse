@@ -9,12 +9,33 @@ namespace WinMuse
     public partial class MainForm : Form
     {
         private Song _song;
+        private TrackEditor _trackEditor;
 
         public MainForm()
         {
             InitializeComponent();
-            menuFileOpen.Click += new EventHandler(this.menuFileOpen_ItemClicked);
-            menuFileSave.Click += new EventHandler(this.menuFileSave_ItemClicked);
+            menuFileNew.Click += menuFileNew_Clicked;
+            menuFileOpen.Click += menuFileOpen_ItemClicked;
+            menuFileSave.Click += menuFileSave_ItemClicked;
+
+            _trackEditor = new TrackEditor();
+            pnlMain.Controls.Add(_trackEditor);
+            _trackEditor.Dock = DockStyle.Fill;
+            _trackEditor.Padding = new Padding(10);
+
+        }
+
+        private void menuFileNew_Clicked(object sender, EventArgs e)
+        {
+            ClearData();
+        }
+
+        private void ClearData()
+        {
+            txtSongName.Text = string.Empty;
+            txtBaseNote.Text = string.Empty;
+            txtDuration.Text = string.Empty;
+            _trackEditor.Tracks = Array.Empty<Track>();
         }
 
         private void menuFileSave_ItemClicked(object sender, EventArgs e)
@@ -29,7 +50,16 @@ namespace WinMuse
                 using var f = File.OpenText(openFileDialog1.FileName);
                 var sf = f.ReadToEnd();
                 _song = JsonSerializer.Deserialize<Song>(sf);
+                LoadData();
             }
+        }
+
+        private void LoadData()
+        {
+            txtSongName.Text = _song.Name;
+            txtBaseNote.Text = _song.BaseNote.ToString();
+            txtDuration.Text = _song.Duration.ToString();
+            _trackEditor.Tracks = _song.Tracks;
         }
 
         private void btnRun_Click(object sender, EventArgs e)
@@ -39,33 +69,9 @@ namespace WinMuse
 
             using var seq = new Sequence();
 
-            var Track = new Track
-            {
-                Period = 48,
-                Affluence = 7,
-                InPosition = 0,
-                Name = "A"
-            };
+            seq.AlgoB(_song);
 
-            var Track2 = new Track
-            {
-                Period = 96,
-                Affluence = 7,
-                InPosition = 0,
-                Name = "B"
-            };
-
-            var song = new Song
-            {
-                Algorithm = Algorithm.B.ToString(),
-                BaseNote = 30,
-                Duration = 3600,
-                Tracks = new Track[] { Track, Track2 }
-            };
-
-            seq.AlgoB(song);
-
-            seq.Save("testWinMuse2.mid");
+            seq.Save("testWinMuse3.mid");
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

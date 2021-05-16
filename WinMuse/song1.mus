@@ -1,19 +1,35 @@
 {
   "name": "Test Song",
-  "baseNote": 50,
-  "duration": 100,
+  "baseNote": 30,
+  "duration": 3600,
   "tracks": [
     {
-      "name": "A",
+      "name": "Track A",
       "octave": 1,
       "chord": [ 0, 2, 6 ],
       "offset": 5,
       "period": 48,
       "inPosition": 0,
-      "outPosition":  100,
+      "affluence": 6
+    },
+    {
+      "name": "Track B",
+      "octave": 1,
+      "offset": 5,
+      "period": 48,
+      "inPosition": 0,
+      "affluence": 6
+    },
+    {
+      "name": "Track C",
+      "octave": 1,
+      "chord": [ 0, 2, 6 ],
+      "offset": 5,
+      "period": 48,
+      "inPosition": 0,
       "affluence": 6
     }
   ],
   "seed": [ 1, 3, 5, 7, 9, 7, 5 ],
-  "algorithm": "D"
+  "algorithm": "B"
 }
