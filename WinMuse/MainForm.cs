@@ -23,6 +23,7 @@ namespace WinMuse
             _trackEditor.Dock = DockStyle.Fill;
             _trackEditor.Padding = new Padding(10);
 
+            _song = new Song();
         }
 
         private void menuFileNew_Clicked(object sender, EventArgs e)
@@ -40,12 +41,18 @@ namespace WinMuse
 
         private void menuFileSave_ItemClicked(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog(this);
+            if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                _song.Tracks = _trackEditor.Tracks;
+                var songJson = JsonSerializer.Serialize(_song);
+                using var songFile = File.CreateText(saveFileDialog1.FileName);
+                songFile.Write(songJson);
+            }
         }
 
         private void menuFileOpen_ItemClicked(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 using var f = File.OpenText(openFileDialog1.FileName);
                 var sf = f.ReadToEnd();
@@ -69,13 +76,36 @@ namespace WinMuse
 
             using var seq = new Sequence();
 
+            _song.Tracks = _trackEditor.Tracks;
+
             seq.AlgoB(_song);
 
-            seq.Save("testWinMuse3.mid");
+            seq.Save("testWinMuse4.mid");
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+        }
+
+        private void txtSongName_KeyUp(object sender, KeyEventArgs e)
+        {
+            _song.Name = txtSongName.Text;
+        }
+
+        private void txtBaseNote_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (int.TryParse(txtBaseNote.Text, out int res))
+            {
+                _song.BaseNote = res;
+            }
+        }
+
+        private void txtDuration_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (int.TryParse(txtDuration.Text, out int res))
+            {
+                _song.Duration = res;
+            }
         }
     }
 }

@@ -37,6 +37,7 @@ namespace WinMuse
             this.menuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRun = new System.Windows.Forms.Button();
             this.txtDuration = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBaseNote = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@ namespace WinMuse
             this.txtSongName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnRun = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -114,12 +114,23 @@ namespace WinMuse
             this.panel1.Size = new System.Drawing.Size(800, 117);
             this.panel1.TabIndex = 2;
             // 
+            // btnRun
+            // 
+            this.btnRun.Location = new System.Drawing.Point(363, 47);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.TabIndex = 14;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
             // txtDuration
             // 
             this.txtDuration.Location = new System.Drawing.Point(75, 73);
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(201, 23);
             this.txtDuration.TabIndex = 13;
+            this.txtDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDuration_KeyUp);
             // 
             // label3
             // 
@@ -136,6 +147,7 @@ namespace WinMuse
             this.txtBaseNote.Name = "txtBaseNote";
             this.txtBaseNote.Size = new System.Drawing.Size(201, 23);
             this.txtBaseNote.TabIndex = 11;
+            this.txtBaseNote.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBaseNote_KeyUp);
             // 
             // label2
             // 
@@ -152,6 +164,7 @@ namespace WinMuse
             this.txtSongName.Name = "txtSongName";
             this.txtSongName.Size = new System.Drawing.Size(201, 23);
             this.txtSongName.TabIndex = 9;
+            this.txtSongName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSongName_KeyUp);
             // 
             // label1
             // 
@@ -169,15 +182,6 @@ namespace WinMuse
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(800, 309);
             this.pnlMain.TabIndex = 3;
-            // 
-            // btnRun
-            // 
-            this.btnRun.Location = new System.Drawing.Point(363, 47);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(75, 23);
-            this.btnRun.TabIndex = 14;
-            this.btnRun.Text = "Run";
-            this.btnRun.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
