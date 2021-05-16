@@ -37,7 +37,6 @@ namespace WinMuse
             this.menuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRun = new System.Windows.Forms.Button();
             this.txtDuration = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBaseNote = new System.Windows.Forms.TextBox();
@@ -45,6 +44,8 @@ namespace WinMuse
             this.txtSongName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.menuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +75,8 @@ namespace WinMuse
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFileNew,
             this.menuFileOpen,
-            this.menuFileSave});
+            this.menuFileSave,
+            this.menuExport});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(37, 20);
             this.menuFile.Text = "&File";
@@ -82,26 +84,25 @@ namespace WinMuse
             // menuFileNew
             // 
             this.menuFileNew.Name = "menuFileNew";
-            this.menuFileNew.Size = new System.Drawing.Size(103, 22);
+            this.menuFileNew.Size = new System.Drawing.Size(108, 22);
             this.menuFileNew.Text = "&New";
             // 
             // menuFileOpen
             // 
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(103, 22);
+            this.menuFileOpen.Size = new System.Drawing.Size(108, 22);
             this.menuFileOpen.Tag = "Open";
             this.menuFileOpen.Text = "&Open";
             // 
             // menuFileSave
             // 
             this.menuFileSave.Name = "menuFileSave";
-            this.menuFileSave.Size = new System.Drawing.Size(103, 22);
+            this.menuFileSave.Size = new System.Drawing.Size(108, 22);
             this.menuFileSave.Tag = "Save";
             this.menuFileSave.Text = "&Save";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnRun);
             this.panel1.Controls.Add(this.txtDuration);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtBaseNote);
@@ -113,16 +114,6 @@ namespace WinMuse
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 117);
             this.panel1.TabIndex = 2;
-            // 
-            // btnRun
-            // 
-            this.btnRun.Location = new System.Drawing.Point(363, 47);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(75, 23);
-            this.btnRun.TabIndex = 14;
-            this.btnRun.Text = "Run";
-            this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
             // txtDuration
             // 
@@ -183,6 +174,16 @@ namespace WinMuse
             this.pnlMain.Size = new System.Drawing.Size(800, 309);
             this.pnlMain.TabIndex = 3;
             // 
+            // menuExport
+            // 
+            this.menuExport.Name = "menuExport";
+            this.menuExport.Size = new System.Drawing.Size(108, 22);
+            this.menuExport.Text = "E&xport";
+            // 
+            // saveFileDialog2
+            // 
+            this.saveFileDialog2.Filter = "MIDI files|*.mid|All files|*.*";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -219,6 +220,7 @@ namespace WinMuse
         private System.Windows.Forms.TextBox txtSongName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.ToolStripMenuItem menuExport;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }

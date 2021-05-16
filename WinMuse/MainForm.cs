@@ -17,6 +17,7 @@ namespace WinMuse
             menuFileNew.Click += MenuFileNew_Clicked;
             menuFileOpen.Click += MenuFileOpen_ItemClicked;
             menuFileSave.Click += MenuFileSave_ItemClicked;
+            menuExport.Click += MenuExport_Clicked;
 
             _trackEditor = new TrackEditor();
             pnlMain.Controls.Add(_trackEditor);
@@ -24,6 +25,23 @@ namespace WinMuse
             _trackEditor.Padding = new Padding(10);
 
             _song = new Song();
+        }
+
+        private void MenuExport_Clicked(object sender, EventArgs e)
+        {
+            if (_song.Tracks.Length > 0)
+            {
+                if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+                {
+                    using var seq = new Sequence();
+
+                    _song.Tracks = _trackEditor.Tracks;
+
+                    seq.AlgoC(_song);
+
+                    seq.Save(saveFileDialog2.FileName);
+                }
+            }
         }
 
         private void MenuFileNew_Clicked(object sender, EventArgs e)
@@ -67,20 +85,6 @@ namespace WinMuse
             txtBaseNote.Text = _song.BaseNote.ToString();
             txtDuration.Text = _song.Duration.ToString();
             _trackEditor.Tracks = _song.Tracks;
-        }
-
-        private void BtnRun_Click(object sender, EventArgs e)
-        {
-            // Diminished Jazz Scale
-            var scale = new int[] { 3, 5, 6, 8, 9, 11, 12, 14, 15 };
-
-            using var seq = new Sequence();
-
-            _song.Tracks = _trackEditor.Tracks;
-
-            seq.AlgoB(_song);
-
-            seq.Save("testWinMuse4.mid");
         }
 
         private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
