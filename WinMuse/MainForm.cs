@@ -14,9 +14,9 @@ namespace WinMuse
         public MainForm()
         {
             InitializeComponent();
-            menuFileNew.Click += menuFileNew_Clicked;
-            menuFileOpen.Click += menuFileOpen_ItemClicked;
-            menuFileSave.Click += menuFileSave_ItemClicked;
+            menuFileNew.Click += MenuFileNew_Clicked;
+            menuFileOpen.Click += MenuFileOpen_ItemClicked;
+            menuFileSave.Click += MenuFileSave_ItemClicked;
 
             _trackEditor = new TrackEditor();
             pnlMain.Controls.Add(_trackEditor);
@@ -26,7 +26,7 @@ namespace WinMuse
             _song = new Song();
         }
 
-        private void menuFileNew_Clicked(object sender, EventArgs e)
+        private void MenuFileNew_Clicked(object sender, EventArgs e)
         {
             ClearData();
         }
@@ -39,7 +39,7 @@ namespace WinMuse
             _trackEditor.Tracks = Array.Empty<Track>();
         }
 
-        private void menuFileSave_ItemClicked(object sender, EventArgs e)
+        private void MenuFileSave_ItemClicked(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
@@ -50,7 +50,7 @@ namespace WinMuse
             }
         }
 
-        private void menuFileOpen_ItemClicked(object sender, EventArgs e)
+        private void MenuFileOpen_ItemClicked(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
@@ -69,7 +69,7 @@ namespace WinMuse
             _trackEditor.Tracks = _song.Tracks;
         }
 
-        private void btnRun_Click(object sender, EventArgs e)
+        private void BtnRun_Click(object sender, EventArgs e)
         {
             // Diminished Jazz Scale
             var scale = new int[] { 3, 5, 6, 8, 9, 11, 12, 14, 15 };
@@ -83,16 +83,16 @@ namespace WinMuse
             seq.Save("testWinMuse4.mid");
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
         }
 
-        private void txtSongName_KeyUp(object sender, KeyEventArgs e)
+        private void TxtSongName_KeyUp(object sender, KeyEventArgs e)
         {
             _song.Name = txtSongName.Text;
         }
 
-        private void txtBaseNote_KeyUp(object sender, KeyEventArgs e)
+        private void TxtBaseNote_KeyUp(object sender, KeyEventArgs e)
         {
             if (int.TryParse(txtBaseNote.Text, out int res))
             {
@@ -100,7 +100,7 @@ namespace WinMuse
             }
         }
 
-        private void txtDuration_KeyUp(object sender, KeyEventArgs e)
+        private void TxtDuration_KeyUp(object sender, KeyEventArgs e)
         {
             if (int.TryParse(txtDuration.Text, out int res))
             {

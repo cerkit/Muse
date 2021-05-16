@@ -82,7 +82,7 @@ namespace WinMuse
             this.btnRemoveTrack.TabIndex = 1;
             this.btnRemoveTrack.Text = "X";
             this.btnRemoveTrack.UseVisualStyleBackColor = true;
-            this.btnRemoveTrack.Click += new System.EventHandler(this.btnRemoveTrack_Click);
+            this.btnRemoveTrack.Click += new System.EventHandler(this.BtnRemoveTrack_Click);
             // 
             // btnAddTrack
             // 
@@ -92,7 +92,7 @@ namespace WinMuse
             this.btnAddTrack.TabIndex = 0;
             this.btnAddTrack.Text = "+";
             this.btnAddTrack.UseVisualStyleBackColor = true;
-            this.btnAddTrack.Click += new System.EventHandler(this.btnAddTrack_Click);
+            this.btnAddTrack.Click += new System.EventHandler(this.BtnAddTrack_Click);
             // 
             // trackListBox
             // 
@@ -103,7 +103,7 @@ namespace WinMuse
             this.trackListBox.Name = "trackListBox";
             this.trackListBox.Size = new System.Drawing.Size(200, 249);
             this.trackListBox.TabIndex = 1;
-            this.trackListBox.Click += new System.EventHandler(this.trackListBox_Click);
+            this.trackListBox.Click += new System.EventHandler(this.TrackListBox_Click);
             // 
             // panel2
             // 
@@ -133,7 +133,7 @@ namespace WinMuse
             this.txtChord.Name = "txtChord";
             this.txtChord.Size = new System.Drawing.Size(190, 23);
             this.txtChord.TabIndex = 17;
-            this.txtChord.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtChord_KeyUp);
+            this.txtChord.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtChord_KeyUp);
             // 
             // label6
             // 
@@ -150,7 +150,7 @@ namespace WinMuse
             this.txtOutPosition.Name = "txtOutPosition";
             this.txtOutPosition.Size = new System.Drawing.Size(190, 23);
             this.txtOutPosition.TabIndex = 15;
-            this.txtOutPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtOutPosition_KeyUp);
+            this.txtOutPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtOutPosition_KeyUp);
             // 
             // label7
             // 
@@ -167,7 +167,7 @@ namespace WinMuse
             this.txtInPosition.Name = "txtInPosition";
             this.txtInPosition.Size = new System.Drawing.Size(190, 23);
             this.txtInPosition.TabIndex = 12;
-            this.txtInPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtInPosition_KeyUp);
+            this.txtInPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtInPosition_KeyUp);
             // 
             // txtPeriod
             // 
@@ -175,7 +175,7 @@ namespace WinMuse
             this.txtPeriod.Name = "txtPeriod";
             this.txtPeriod.Size = new System.Drawing.Size(190, 23);
             this.txtPeriod.TabIndex = 11;
-            this.txtPeriod.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPeriod_KeyUp);
+            this.txtPeriod.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtPeriod_KeyUp);
             // 
             // txtOffset
             // 
@@ -183,7 +183,7 @@ namespace WinMuse
             this.txtOffset.Name = "txtOffset";
             this.txtOffset.Size = new System.Drawing.Size(190, 23);
             this.txtOffset.TabIndex = 10;
-            this.txtOffset.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtOffset_KeyUp);
+            this.txtOffset.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtOffset_KeyUp);
             // 
             // txtOctave
             // 
@@ -191,7 +191,7 @@ namespace WinMuse
             this.txtOctave.Name = "txtOctave";
             this.txtOctave.Size = new System.Drawing.Size(190, 23);
             this.txtOctave.TabIndex = 9;
-            this.txtOctave.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtOctave_KeyUp);
+            this.txtOctave.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtOctave_KeyUp);
             // 
             // txtName
             // 
@@ -199,7 +199,7 @@ namespace WinMuse
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(190, 23);
             this.txtName.TabIndex = 8;
-            this.txtName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyUp);
+            this.txtName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtName_KeyUp);
             // 
             // label5
             // 

@@ -67,7 +67,7 @@ namespace WinMuse
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
             // 
             // menuFile
             // 
@@ -122,7 +122,7 @@ namespace WinMuse
             this.btnRun.TabIndex = 14;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
             // txtDuration
             // 
@@ -130,7 +130,7 @@ namespace WinMuse
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(201, 23);
             this.txtDuration.TabIndex = 13;
-            this.txtDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDuration_KeyUp);
+            this.txtDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtDuration_KeyUp);
             // 
             // label3
             // 
@@ -147,7 +147,7 @@ namespace WinMuse
             this.txtBaseNote.Name = "txtBaseNote";
             this.txtBaseNote.Size = new System.Drawing.Size(201, 23);
             this.txtBaseNote.TabIndex = 11;
-            this.txtBaseNote.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBaseNote_KeyUp);
+            this.txtBaseNote.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtBaseNote_KeyUp);
             // 
             // label2
             // 
@@ -164,7 +164,7 @@ namespace WinMuse
             this.txtSongName.Name = "txtSongName";
             this.txtSongName.Size = new System.Drawing.Size(201, 23);
             this.txtSongName.TabIndex = 9;
-            this.txtSongName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSongName_KeyUp);
+            this.txtSongName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSongName_KeyUp);
             // 
             // label1
             // 

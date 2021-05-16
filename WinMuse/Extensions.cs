@@ -17,11 +17,13 @@ namespace WinMuse
 
         public static void InsertNote(this Sanford.Multimedia.Midi.Track t, int pitch, int velocity, int position, int duration, int channel)
         {
-            MIDI.ChannelMessageBuilder builder = new MIDI.ChannelMessageBuilder();
-            builder.Command = MIDI.ChannelCommand.NoteOn;
-            builder.Data1 = pitch;
-            builder.Data2 = velocity;
-            builder.MidiChannel = channel;
+            MIDI.ChannelMessageBuilder builder = new()
+            {
+                Command = MIDI.ChannelCommand.NoteOn,
+                Data1 = pitch,
+                Data2 = velocity,
+                MidiChannel = channel
+            };
             builder.Build();
             t.Insert(position, builder.Result);
             builder.Command = MIDI.ChannelCommand.NoteOff;
@@ -156,7 +158,7 @@ namespace WinMuse
                             note = Scales.JazzScale.GetNote(song, trk);
                             var r = new Random();
                             // high chance we'll play the note
-                            if (r.Next(0, 99) % 3 > 0)
+                            if (r.Next(0, 100) % 3 > 0)
                             {
                                 t.InsertNote(note, 100, pos, noteDuration, channel);
                             }

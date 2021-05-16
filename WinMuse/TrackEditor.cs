@@ -48,7 +48,7 @@ namespace WinMuse
             }
         }
 
-        private void trackListBox_Click(object sender, EventArgs e)
+        private void TrackListBox_Click(object sender, EventArgs e)
         {
             if (trackListBox.SelectedItem != null)
             {
@@ -66,7 +66,7 @@ namespace WinMuse
             }
         }
 
-        private void btnAddTrack_Click(object sender, EventArgs e)
+        private void BtnAddTrack_Click(object sender, EventArgs e)
         {
             var trackList = _tracks.ToList();
             var track = new Track();
@@ -77,7 +77,7 @@ namespace WinMuse
 
         }
 
-        private void btnRemoveTrack_Click(object sender, EventArgs e)
+        private void BtnRemoveTrack_Click(object sender, EventArgs e)
         {
             if (_tracks.Any())
             {
@@ -88,39 +88,49 @@ namespace WinMuse
             }
         }
 
-        private void txtName_KeyUp(object sender, KeyEventArgs e)
+        private void TxtName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_tracks.Any())
+            if (_tracks.Any() && trackListBox.SelectedIndex > -1)
             {
                 _tracks[trackListBox.SelectedIndex].Name = txtName.Text;
+                trackListBox.Items[trackListBox.SelectedIndex] = _tracks[trackListBox.SelectedIndex];
+                trackListBox.Refresh();
             }
         }
 
-        private void txtOctave_KeyUp(object sender, KeyEventArgs e)
+        private void TxtOctave_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_tracks.Any())
+            if (_tracks.Any() && trackListBox.SelectedIndex > -1)
             {
                 if (int.TryParse(txtOctave.Text, out int res))
                 {
                     _tracks[trackListBox.SelectedIndex].Octave = res;
                 }
+                else
+                {
+                    _tracks[trackListBox.SelectedIndex].Octave = null;
+                }
             }
         }
 
-        private void txtOffset_KeyUp(object sender, KeyEventArgs e)
+        private void TxtOffset_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_tracks.Any())
+            if (_tracks.Any() && trackListBox.SelectedIndex > -1)
             {
                 if (int.TryParse(txtOffset.Text, out int res))
                 {
                     _tracks[trackListBox.SelectedIndex].Offset = res;
                 }
+                else
+                {
+                    _tracks[trackListBox.SelectedIndex].Offset = null;
+                }
             }
         }
 
-        private void txtPeriod_KeyUp(object sender, KeyEventArgs e)
+        private void TxtPeriod_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_tracks.Any())
+            if (_tracks.Any() && trackListBox.SelectedIndex > -1)
             {
                 if (int.TryParse(txtPeriod.Text, out int res))
                 {
@@ -129,15 +139,15 @@ namespace WinMuse
             }
         }
 
-        private void txtChord_KeyUp(object sender, KeyEventArgs e)
+        private void TxtChord_KeyUp(object sender, KeyEventArgs e)
         {
             var noteList = new List<int?>();
             var l = txtChord.Text.Split(',');
-            if (l.Any())
+            if (l.Any() && trackListBox.SelectedIndex > -1)
             {
                 foreach(var n in l)
                 {
-                    if (int.TryParse(n, out int res))
+                    if (int.TryParse(n.Trim(), out int res))
                     {
                         noteList.Add(res);
                     }
@@ -147,28 +157,36 @@ namespace WinMuse
             }
             else
             {
-                _tracks[trackListBox.SelectedIndex].Chord = Array.Empty<int?>();
+                _tracks[trackListBox.SelectedIndex].Chord = null;
             }
         }
 
-        private void txtInPosition_KeyUp(object sender, KeyEventArgs e)
+        private void TxtInPosition_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_tracks.Any())
+            if (_tracks.Any() && trackListBox.SelectedIndex > -1)
             {
                 if (int.TryParse(txtInPosition.Text, out int res))
                 {
                     _tracks[trackListBox.SelectedIndex].InPosition = res;
                 }
+                else
+                {
+                    _tracks[trackListBox.SelectedIndex].InPosition = null;
+                }
             }
         }
 
-        private void txtOutPosition_KeyUp(object sender, KeyEventArgs e)
+        private void TxtOutPosition_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_tracks.Any())
+            if (_tracks.Any() && trackListBox.SelectedIndex > -1)
             {
                 if (int.TryParse(txtOutPosition.Text, out int res))
                 {
                     _tracks[trackListBox.SelectedIndex].OutPosition = res;
+                }
+                else
+                {
+                    _tracks[trackListBox.SelectedIndex].OutPosition = null;
                 }
             }
         }
